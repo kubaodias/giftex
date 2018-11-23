@@ -1,0 +1,17 @@
+---
+
+plugins:
+ - type: sms
+   module: GiftexJustSendPlugin
+
+members:
+ - name: "John Williams"
+   plugins:
+   - type: sms
+     meta:
+     - number: "+01234567890"
+ - name: "Diane Smith"
+   plugins:
+   - type: sms
+     meta:
+     - number: "+01098765432"

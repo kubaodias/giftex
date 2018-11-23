@@ -5,12 +5,6 @@ defmodule Giftex do
 
   @doc """
   Hello world.
-
-  ## Examples
-
-      iex> Giftex.hello
-      :world
-
   """
   def hello do
     :world

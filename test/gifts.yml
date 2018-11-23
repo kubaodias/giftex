@@ -1,0 +1,30 @@
+---
+
+plugins:
+ - type: test_mail
+   module: GiftexTestMailPlugin
+ - type: test_sms
+   module: GiftexTestSmsPlugin
+
+members:
+ - name: "John Williams"
+   plugins:
+   - type: test_mail
+     meta:
+      email: "jwilliams@mail.com"
+   - type: test_sms
+     meta:
+      number: "+01234567890"
+ - name: "Bob McRoe"
+   plugins:
+   - type: test_mail
+     meta:
+      email: "bmcroe@mail.com"
+ - name: "Diane Smith"
+   plugins:
+   - type: test_mail
+     meta:
+      email: "dsmith@mail.com"
+   - type: test_sms
+     meta:
+      number: "+01098765432"
