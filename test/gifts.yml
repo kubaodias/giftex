@@ -2,9 +2,9 @@
 
 plugins:
  - type: test_mail
-   module: GiftexTestMailPlugin
+   module: GiftexPluginMailTest
  - type: test_sms
-   module: GiftexTestSmsPlugin
+   module: GiftexPluginSmsTest
 
 members:
  - name: "John Williams"

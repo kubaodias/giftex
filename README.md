@@ -10,7 +10,7 @@ In your config/dev.exs file you can find reference to gifts.yml configuration fi
 use Mix.Config
 
 config :giftex,
-  config: "gifts.yml"
+  config: "config/gifts.yml"
 ```
 Save config/gifts.yml.example as config/gifts.yml and configure to your needs.
 YML configuration file contains list of plugins and list of members
@@ -27,12 +27,12 @@ members:
    plugins:
    - type: sms
      meta:
-     - number: "+01234567890"
+      number: "+01234567890"
  - name: "Diane Smith"
    plugins:
    - type: sms
      meta:
-     - number: "+01098765432"
+      number: "+01098765432"
 
 ```
 
@@ -40,7 +40,7 @@ members:
 
 After configuring list of members in YML file run the application with:
 ```
-mix run
+mix giftex
 ```
 It will assign members randomly to each other and send notifications
  to each of them accordingly to configured plugins.

@@ -9,9 +9,9 @@ members:
    plugins:
    - type: sms
      meta:
-     - number: "+01234567890"
+      number: "+01234567890"
  - name: "Diane Smith"
    plugins:
    - type: sms
      meta:
-     - number: "+01098765432"
+      number: "+01098765432"

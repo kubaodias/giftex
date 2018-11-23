@@ -25,3 +25,6 @@ giftex-*.tar
 # Ignore Intellij files
 /.idea
 *.iml
+
+# Ignore default YML configuration
+/config/gifts.yml

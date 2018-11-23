@@ -18,4 +18,12 @@ defmodule GiftexMemberTest do
   ]
 
   def members, do: @members
+
+  test "exec plugins" do
+    member = Enum.at(@members, 0)
+    result = GiftexMember.exec_plugins(member, GiftexPluginTest.plugins)
+    assert :ok = result
+    GiftexPluginMailTest.assert_sent(member.plugins_meta["test_mail"])
+    GiftexPluginSmsTest.assert_sent(member.plugins_meta["test_sms"])
+  end
 end

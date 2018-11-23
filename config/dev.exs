@@ -1,4 +1,4 @@
 use Mix.Config
 
 config :giftex,
-  config: "gifts.yml"
+  config: "config/gifts.yml"
