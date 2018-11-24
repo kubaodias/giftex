@@ -1,5 +1,7 @@
 # GiftEx (Gifts in Elixir)
 
+[![Build Status](https://travis-ci.org/kubaodias/giftex.svg?branch=master)](https://travis-ci.org/kubaodias/giftex)
+
 This application can be used to make random assigments between people that want to share gifts with each other.
 Plugins can be used to send notifications with drawn assignment.
 
@@ -38,7 +40,7 @@ members:
 
 ## Usage
 
-After configuring list of members in YML file run the application with:
+After configuring list of members and available plugins in YML file you can run the application with:
 ```
 mix giftex
 ```
