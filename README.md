@@ -35,8 +35,16 @@ members:
    - type: sms
      meta:
       number: "+01098765432"
+ - name: "Bob McRoe"
+   plugins:
+   - type: sms
+     meta:
+      number: "+01873456210"
+   exclude:
+   - "John Williams"
 
 ```
+Each member can have an optional list of excluded members e.g. members to whom he or she can't give gifts.
 
 ## Usage
 
@@ -45,4 +53,4 @@ After configuring list of members and available plugins in YML file you can run 
 mix giftex
 ```
 It will assign members randomly to each other and send notifications
- to each of them accordingly to configured plugins.
+ to each of them accordingly to configured plugins. An application will fail if there's no possibility to draw gift assignments based on current YML configuration.

@@ -15,3 +15,10 @@ members:
    - type: sms
      meta:
       number: "+01098765432"
+ - name: "Bob McRoe"
+   plugins:
+   - type: test_mail
+     meta:
+      email: "bmcroe@mail.com"
+   exclude:
+   - "John Williams"

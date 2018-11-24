@@ -4,17 +4,29 @@ defmodule GiftexMemberTest do
 
   # members defined in test/gifts.yml
   @members [
-    %GiftexMember{name: "John Williams", plugins_meta: %{
-      "test_mail" => %{"email" => "jwilliams@mail.com"},
-      "test_sms" =>  %{"number" => "+01234567890"}
-    }},
-    %GiftexMember{name: "Bob McRoe", plugins_meta: %{
-      "test_mail" => %{"email" => "bmcroe@mail.com"}
-    }},
-    %GiftexMember{name: "Diane Smith", plugins_meta: %{
-      "test_mail" => %{"email" => "dsmith@mail.com"},
-      "test_sms" =>  %{"number" => "+01098765432"}
-    }}
+    %GiftexMember{
+      name: "John Williams",
+      plugins_meta: %{
+        "test_mail" => %{"email" => "jwilliams@mail.com"},
+        "test_sms" =>  %{"number" => "+01234567890"}
+      },
+      exclude: ["Diane Smith"]
+    },
+    %GiftexMember{
+      name: "Bob McRoe",
+      plugins_meta: %{
+        "test_mail" => %{"email" => "bmcroe@mail.com"}
+      },
+      exclude: []
+    },
+    %GiftexMember{
+      name: "Diane Smith",
+        plugins_meta: %{
+        "test_mail" => %{"email" => "dsmith@mail.com"},
+        "test_sms" =>  %{"number" => "+01098765432"}
+      },
+      exclude: []
+    }
   ]
 
   def members, do: @members

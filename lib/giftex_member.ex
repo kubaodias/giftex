@@ -4,7 +4,8 @@ defmodule GiftexMember do
   """
 
   defstruct name: nil,
-            plugins_meta: nil
+            plugins_meta: nil,
+            exclude: nil
 
   @doc """
   Execute plugins synchronously accordingly to configured member plugin metadata.

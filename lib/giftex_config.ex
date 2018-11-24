@@ -21,11 +21,12 @@ defmodule GiftexConfig do
 
   def members(config) do
     config["members"]
-    |> Enum.map(fn %{"name" => name, "plugins" => plugins} ->
+    |> Enum.map(fn %{"name" => name, "plugins" => plugins} = member ->
+      excluded_members = Map.get(member, "exclude", [])
       plugins_meta = plugins
       |> Enum.map(fn %{"type" => type, "meta" => meta} -> {type, meta} end)
       |> Map.new
-      %GiftexMember{name: name, plugins_meta: plugins_meta}
+      %GiftexMember{name: name, plugins_meta: plugins_meta, exclude: excluded_members}
     end)
   end
 

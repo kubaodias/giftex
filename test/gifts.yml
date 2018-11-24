@@ -15,6 +15,8 @@ members:
    - type: test_sms
      meta:
       number: "+01234567890"
+   exclude:
+   - "Diane Smith"
  - name: "Bob McRoe"
    plugins:
    - type: test_mail
