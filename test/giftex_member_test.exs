@@ -38,4 +38,18 @@ defmodule GiftexMemberTest do
     GiftexPluginMailTest.assert_sent(member.plugins_meta["test_mail"])
     GiftexPluginSmsTest.assert_sent(member.plugins_meta["test_sms"])
   end
+
+  test "get member by name" do
+    assert %GiftexMember{
+             name: "Bob McRoe",
+             plugins_meta: %{
+               "test_mail" => %{"email" => "bmcroe@mail.com"}
+             },
+             exclude: []
+           } == GiftexMember.get(@members, "Bob McRoe")
+  end
+
+  test "get member by name not found" do
+    assert nil == GiftexMember.get(@members, "Steve McDoe")
+  end
 end
