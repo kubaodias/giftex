@@ -21,7 +21,11 @@ defmodule Giftex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:yaml_elixir, "~> 2.0"}
+      {:mox, "~> 0.4", only: :test},
+      {:yaml_elixir, "~> 2.0"},
+      {:httpotion, "~> 3.1"},
+      {:poison, "~> 3.1"},
+      {:mustache, "~> 0.3.0"}
     ]
   end
 end

@@ -3,6 +3,8 @@ defmodule GiftexDraw do
   Documentation for GiftexDraw.
   """
 
+  require Logger
+
   @doc """
   Draw members assignments for gifts giving
 
@@ -25,7 +27,9 @@ defmodule GiftexDraw do
 
   """
   def run(members) do
-    draw(members, 0)
+    result = draw(members, 0)
+    Logger.debug("Draw result: #{inspect(result)}")
+    result
   end
 
   defp draw(members, m) when m == length(members) do

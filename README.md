@@ -12,7 +12,8 @@ In your config/dev.exs file you can find reference to gifts.yml configuration fi
 use Mix.Config
 
 config :giftex,
-  config: "config/gifts.yml"
+  config: "config/gifts.yml",
+  http_client: HTTPotion
 ```
 Save config/gifts.yml.example as config/gifts.yml and configure to your needs.
 YML configuration file contains list of plugins and list of members
@@ -22,7 +23,13 @@ with configuration for each of the plugins.
 
 plugins:
  - type: sms
-   module: GiftexJustSendPlugin
+   module: GiftexPluginJustSend
+   config:
+     api_url: "https://justsend.pl/api/rest"
+     api_key: "Z2lmdGV4anVzdHNlbmRwbHVnaW5jb25maWcK"
+     message:
+       title: "Giftex"
+       text: "Hello {{giver}}! Your gift will go to: {{receiver}}..."
 
 members:
  - name: "John Williams"
@@ -54,3 +61,8 @@ mix giftex
 ```
 It will assign members randomly to each other and send notifications
  to each of them accordingly to configured plugins. An application will fail if there's no possibility to draw gift assignments based on current YML configuration.
+
+## Plugins
+
+Only available plugin is GiftexPluginJustSend (https://justsend.pl/) at this moment.
+Configuration of the plugin is available in `plugins` section in gifts.yml configuration file.

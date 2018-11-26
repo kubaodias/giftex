@@ -10,11 +10,11 @@ defmodule GiftexMember do
   @doc """
   Execute plugins synchronously accordingly to configured member plugin metadata.
   """
-  def exec_plugins(plugins, from, to) do
-    from.plugins_meta
+  def exec_plugins(plugins, giver, receiver) do
+    giver.plugins_meta
     |> Enum.each(fn {plugin_name, _} ->
       GiftexPlugin.get(plugins, plugin_name)
-      |> GiftexPlugin.exec(from, to)
+      |> GiftexPlugin.exec(giver, receiver)
     end)
   end
 

@@ -14,8 +14,8 @@ defmodule GiftexConfig do
 
   def plugins(config) do
     config["plugins"]
-    |> Enum.map(fn %{"type" => type, "module" => module} ->
-       %GiftexPlugin{type: type, module: module}
+    |> Enum.map(fn %{"type" => type, "module" => module, "config" => config} ->
+       %GiftexPlugin{type: type, module: module, config: config}
     end)
   end
 

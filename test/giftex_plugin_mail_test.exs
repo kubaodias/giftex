@@ -3,17 +3,15 @@ defmodule GiftexPluginMailTest do
 
   use ExUnit.Case
 
-  def exec(from, to) do
-    mail_meta = from.plugins_meta["test_mail"]
-    send(self(), {:test_mail, mail_meta, from, to})
+  def exec(config, giver, receiver) do
+    send(self(), {:test_mail, config["smtp_server"], giver, receiver})
     :ok
   end
 
   @doc """
   Assert that metadata has been sent by invoking exec/1.
   """
-  def assert_sent(from, to) do
-    mail_meta = from.plugins_meta["test_mail"]
-    assert_receive {:test_mail, mail_meta, from, to}
+  def assert_sent(giver, receiver) do
+    assert_receive {:test_mail, "10.0.0.10:465", giver, receiver}
   end
 end

@@ -2,7 +2,13 @@
 
 plugins:
  - type: sms
-   module: GiftexJustSendPlugin
+   module: GiftexPluginJustSend
+   config:
+     api_url: "https://justsend.pl/api/rest"
+     api_key: "Z2lmdGV4anVzdHNlbmRwbHVnaW5jb25maWcK"
+     message:
+       title: "Giftex"
+       text: "Hello {{giver}}! Your gift will go to: {{receiver}}..."
 
 members:
  - name: "John Williams"

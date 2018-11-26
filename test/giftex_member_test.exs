@@ -32,12 +32,12 @@ defmodule GiftexMemberTest do
   def members, do: @members
 
   test "exec plugins" do
-    from   = Enum.at(@members, 0)
-    to     = Enum.at(@members, 1)
-    result = GiftexMember.exec_plugins(GiftexPluginTest.plugins, from, to)
+    giver     = Enum.at(@members, 0)
+    receiver  = Enum.at(@members, 1)
+    result    = GiftexMember.exec_plugins(GiftexPluginTest.plugins, giver, receiver)
     assert :ok = result
-    GiftexPluginMailTest.assert_sent(from, to)
-    GiftexPluginSmsTest.assert_sent(from, to)
+    GiftexPluginMailTest.assert_sent(giver, receiver)
+    GiftexPluginSmsTest.assert_sent(giver, receiver)
   end
 
   test "get member by name" do

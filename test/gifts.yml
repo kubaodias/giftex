@@ -3,8 +3,13 @@
 plugins:
  - type: test_mail
    module: GiftexPluginMailTest
+   config:
+     smtp_server: "10.0.0.10:465"
+
  - type: test_sms
    module: GiftexPluginSmsTest
+   config:
+     sms_gateway: "sms://message.com/gw"
 
 members:
  - name: "John Williams"

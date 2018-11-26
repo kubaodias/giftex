@@ -2,10 +2,13 @@ defmodule GiftexPlugin do
   @moduledoc """
   Documentation for GiftexPlugin.
   """
-  @callback exec(%GiftexMember{}, %GiftexMember{}) :: :ok
+  @callback exec(Maps.m, %GiftexMember{}, %GiftexMember{}) :: :ok
+
+  require Logger
 
   defstruct type: nil,
-            module: nil
+            module: nil,
+            config: nil
 
   @doc """
   Get plugin by name from configuration.
@@ -19,10 +22,11 @@ defmodule GiftexPlugin do
   @doc """
   Execute plugin job with some metadata.
   """
-  def exec(plugin, from, to) do
-    %GiftexPlugin{module: module_string} = plugin
+  def exec(plugin, giver, receiver) do
+    %GiftexPlugin{module: module_string, config: config} = plugin
     module = ("Elixir." <> module_string) |> String.to_existing_atom
-    module.exec(from, to)
+    Logger.debug("Exec plugin #{module_string} for members: #{giver.name} => #{receiver.name}")
+    module.exec(config, giver, receiver)
   end
 
 end
