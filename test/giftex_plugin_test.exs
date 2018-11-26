@@ -20,19 +20,21 @@ defmodule GiftexPluginTest do
 
   test "exec mail plugin" do
     plugin = Enum.at(@plugins, 0)
-    meta = %{"email": "user@mail.com"}
+    from   = Enum.at(GiftexMemberTest.members, 0)
+    to     = Enum.at(GiftexMemberTest.members, 1)
 
-    result = GiftexPlugin.exec(plugin, meta)
-    GiftexPluginMailTest.assert_sent(meta)
+    result = GiftexPlugin.exec(plugin, from, to)
+    GiftexPluginMailTest.assert_sent(from, to)
     assert :ok == result
   end
 
   test "exec sms plugin" do
     plugin = Enum.at(@plugins, 1)
-    meta = %{"number": "+012233445566"}
+    from   = Enum.at(GiftexMemberTest.members, 0)
+    to     = Enum.at(GiftexMemberTest.members, 1)
 
-    result = GiftexPlugin.exec(plugin, meta)
-    GiftexPluginSmsTest.assert_sent(meta)
+    result = GiftexPlugin.exec(plugin, from, to)
+    GiftexPluginSmsTest.assert_sent(from, to)
     assert :ok == result
   end
 end

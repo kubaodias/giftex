@@ -5,10 +5,16 @@ defmodule GiftexTest do
   test "run" do
     Mix.Tasks.Giftex.run([])
 
-    GiftexPluginMailTest.assert_sent(%{"email" => "jwilliams@mail.com"})
-    GiftexPluginMailTest.assert_sent(%{"email" => "bmcroe@mail.com"})
-    GiftexPluginMailTest.assert_sent(%{"email" => "dsmith@mail.com"})
-    GiftexPluginSmsTest.assert_sent(%{"number" => "+01234567890"})
-    GiftexPluginSmsTest.assert_sent(%{"number" => "+01098765432"})
+    john = Enum.at(GiftexMemberTest.members(), 0)
+    bob = Enum.at(GiftexMemberTest.members(), 1)
+    diane = Enum.at(GiftexMemberTest.members(), 2)
+
+    GiftexPluginMailTest.assert_sent(john, bob)
+    GiftexPluginSmsTest.assert_sent(john, bob)
+
+    GiftexPluginMailTest.assert_sent(bob, diane)
+
+    GiftexPluginMailTest.assert_sent(diane, john)
+    GiftexPluginSmsTest.assert_sent(diane, john)
   end
 end

@@ -3,15 +3,17 @@ defmodule GiftexPluginSmsTest do
 
   use ExUnit.Case
 
-  def exec(meta) do
-    send(self(), {:test_sms, meta})
+  def exec(from, to) do
+    sms_meta = from.plugins_meta["test_sms"]
+    send(self(), {:test_sms, sms_meta, from, to})
     :ok
   end
 
   @doc """
   Assert that metadata has been sent by invoking exec/1.
   """
-  def assert_sent(meta) do
-    assert_receive {:test_sms, meta}
+  def assert_sent(from, to) do
+    sms_meta = from.plugins_meta["test_sms"]
+    assert_receive {:test_sms, sms_meta, from, to}
   end
 end

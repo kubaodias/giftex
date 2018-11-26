@@ -22,6 +22,8 @@ members:
    - type: test_mail
      meta:
       email: "bmcroe@mail.com"
+   exclude:
+   - "John Williams"
  - name: "Diane Smith"
    plugins:
    - type: test_mail

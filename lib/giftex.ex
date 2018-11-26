@@ -10,8 +10,14 @@ defmodule Mix.Tasks.Giftex do
     members = config |> GiftexConfig.members
 
     members
-    |> Enum.each(fn member ->
-      GiftexMember.exec_plugins(member, plugins)
+    |> Enum.shuffle
+    |> GiftexDraw.run
+    |> Enum.each(fn {from, to} ->
+      GiftexMember.exec_plugins(
+        plugins,
+        GiftexMember.get(members, from),
+        GiftexMember.get(members, to)
+      )
     end)
   end
 end

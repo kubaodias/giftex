@@ -17,7 +17,7 @@ defmodule GiftexMemberTest do
       plugins_meta: %{
         "test_mail" => %{"email" => "bmcroe@mail.com"}
       },
-      exclude: []
+      exclude: ["John Williams"]
     },
     %GiftexMember{
       name: "Diane Smith",
@@ -32,11 +32,12 @@ defmodule GiftexMemberTest do
   def members, do: @members
 
   test "exec plugins" do
-    member = Enum.at(@members, 0)
-    result = GiftexMember.exec_plugins(member, GiftexPluginTest.plugins)
+    from   = Enum.at(@members, 0)
+    to     = Enum.at(@members, 1)
+    result = GiftexMember.exec_plugins(GiftexPluginTest.plugins, from, to)
     assert :ok = result
-    GiftexPluginMailTest.assert_sent(member.plugins_meta["test_mail"])
-    GiftexPluginSmsTest.assert_sent(member.plugins_meta["test_sms"])
+    GiftexPluginMailTest.assert_sent(from, to)
+    GiftexPluginSmsTest.assert_sent(from, to)
   end
 
   test "get member by name" do
@@ -45,7 +46,7 @@ defmodule GiftexMemberTest do
              plugins_meta: %{
                "test_mail" => %{"email" => "bmcroe@mail.com"}
              },
-             exclude: []
+             exclude: ["John Williams"]
            } == GiftexMember.get(@members, "Bob McRoe")
   end
 
